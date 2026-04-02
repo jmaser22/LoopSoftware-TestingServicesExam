@@ -1,0 +1,14 @@
+{
+  "name": "LoopSoftwareExam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login.spec.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "dependencies": {
+    "@playwright/test": "^1.59.1",
+    "dotenv": "^17.4.0"
+  }
+}

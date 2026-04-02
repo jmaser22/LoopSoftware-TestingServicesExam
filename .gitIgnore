@@ -1,2 +1,9 @@
 # JetBrains IDE specific files to ignore
 .idea/
+node_modules/
+test-results/
+
+
+
+# dont commit .env to src ctl users should use the sample file
+.env

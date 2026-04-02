@@ -1,14 +1,37 @@
 
 
 const { test, expect } = require('@playwright/test');
+require('dotenv').config();
+const { validateEnv, getEnvVar } = require('../utils/env');
 
-test('Test Case: 1', async ({ page }) => {
-    await page.goto('https://animated-gingersnap-8cf7f2.netlify.app/');
+const URL = "https://animated-gingersnap-8cf7f2.netlify.app/"
+
+
+async function login(page){
+    //what happens if the .env file is missing?
+    //what happens if the .env file is missing the TEST_USERNAME value?
+
+    validateEnv();
+
+    //load .env
+    const username = getEnvVar('TEST_USERNAME');
+    const password = getEnvVar('TEST_PASSWORD');
+
+    await page.goto(URL);
 
     //login to demo
-    await page.getByLabel('Username').fill('admin');
-    await page.getByLabel('Password').fill('password123');
+    await page.getByLabel('Username').fill(username);
+    await page.getByLabel('Password').fill(password);
     await page.getByRole('button', { name: 'Sign in' }).click();
+
+}
+
+//TODO javadoc
+test('Test Case: 1', async ({ page }) => {
+
+
+    //login to demo
+    await login(page);
 
     //navigate to web application
     await page.getByRole('button', { name: 'Web Application Main web application development' }).click();
@@ -30,13 +53,8 @@ test('Test Case: 1', async ({ page }) => {
 
 test('Test Case: 2', async ({ page }) => {
 
-    await page.goto('https://animated-gingersnap-8cf7f2.netlify.app/');
-
-
     //login to demo
-    await page.getByLabel('Username').fill('admin');
-    await page.getByLabel('Password').fill('password123');
-    await page.getByRole('button', { name: 'Sign in' }).click();
+    await login(page);
 
     //navigate to web application
     await page.getByRole('button', { name: 'Web Application Main web application development' }).click();
@@ -57,13 +75,8 @@ test('Test Case: 2', async ({ page }) => {
 
 test('Test Case: 3', async ({ page }) => {
 
-    await page.goto('https://animated-gingersnap-8cf7f2.netlify.app/');
-
-
     //login to demo
-    await page.getByLabel('Username').fill('admin');
-    await page.getByLabel('Password').fill('password123');
-    await page.getByRole('button', {name: 'Sign in'}).click();
+    await login(page);
 
     //navigate to web application
     await page.getByRole('button', { name: 'Web Application Main web application development' }).click();
@@ -82,13 +95,8 @@ test('Test Case: 3', async ({ page }) => {
 
 test('Test Case: 4', async ({ page }) => {
 
-    await page.goto('https://animated-gingersnap-8cf7f2.netlify.app/');
-
-
     //login to demo
-    await page.getByLabel('Username').fill('admin');
-    await page.getByLabel('Password').fill('password123');
-    await page.getByRole('button', {name: 'Sign in'}).click();
+    await login(page);
 
     //Navigate to "Web Application."
     await page.getByRole('button', { name: 'Mobile Application Native mobile app development' }).click();
@@ -107,13 +115,8 @@ test('Test Case: 4', async ({ page }) => {
 
 test('Test Case: 5', async ({ page }) => {
 
-    await page.goto('https://animated-gingersnap-8cf7f2.netlify.app/');
-
-
     //login to demo
-    await page.getByLabel('Username').fill('admin');
-    await page.getByLabel('Password').fill('password123');
-    await page.getByRole('button', {name: 'Sign in'}).click();
+    await login(page);
 
     //Navigate to "Web Application."
     await page.getByRole('button', {name: 'Mobile Application Native mobile app development'}).click();
@@ -136,13 +139,8 @@ test('Test Case: 5', async ({ page }) => {
 
 test('Test Case: 6', async ({ page }) => {
 
-    await page.goto('https://animated-gingersnap-8cf7f2.netlify.app/');
-
-
     //login to demo
-    await page.getByLabel('Username').fill('admin');
-    await page.getByLabel('Password').fill('password123');
-    await page.getByRole('button', {name: 'Sign in'}).click();
+    await login(page);
 
     //Navigate to "Web Application."
     await page.getByRole('button', {name: 'Mobile Application Native mobile app development'}).click();

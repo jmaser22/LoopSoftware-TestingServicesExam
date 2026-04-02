@@ -6,7 +6,12 @@ const { validateEnv, getEnvVar } = require('../utils/env');
 
 const URL = "https://animated-gingersnap-8cf7f2.netlify.app/"
 
-
+/**
+ * helper function that does the login to demo part of all tests
+ * it also does validation on the required env variables
+ *
+ * @param page
+ */
 async function login(page){
     //what happens if the .env file is missing?
     //what happens if the .env file is missing the TEST_USERNAME value?
@@ -26,7 +31,9 @@ async function login(page){
 
 }
 
-//TODO javadoc
+/**
+ * test to make sure tasks on the "to do" column have the correct tags
+ */
 test('Test Case: 1', async ({ page }) => {
 
 
@@ -50,7 +57,9 @@ test('Test Case: 1', async ({ page }) => {
     await expect(highPriorityTag).toBeVisible();
 });
 
-
+/**
+ * test to make sure tasks on the "to do" column have the correct tags
+ */
 test('Test Case: 2', async ({ page }) => {
 
     //login to demo
@@ -72,7 +81,9 @@ test('Test Case: 2', async ({ page }) => {
 
 });
 
-
+/**
+ * test case to make sure "in progress" column has the correct tags
+ */
 test('Test Case: 3', async ({ page }) => {
 
     //login to demo
@@ -92,7 +103,9 @@ test('Test Case: 3', async ({ page }) => {
     await expect(featureTag).toBeVisible();
 });
 
-
+/**
+ * test case to make sure "to do" column has the correct tags in a different tab
+ */
 test('Test Case: 4', async ({ page }) => {
 
     //login to demo
@@ -112,7 +125,9 @@ test('Test Case: 4', async ({ page }) => {
 
 });
 
-
+/**
+ * test case to make sure "in progress" column has the correct tags in a different tab
+ */
 test('Test Case: 5', async ({ page }) => {
 
     //login to demo
@@ -136,7 +151,9 @@ test('Test Case: 5', async ({ page }) => {
 
 });
 
-
+/**
+ * test case to make sure "completed" column has the correct tags in a different tab
+ */
 test('Test Case: 6', async ({ page }) => {
 
     //login to demo
